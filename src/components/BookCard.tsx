@@ -1,9 +1,13 @@
 import React from 'react';
 import { useFavorites } from '../context/FavoritesContext';
 
-const BookCard = ({ book }) => {
+interface BookCardProps {
+  book: any; // 👉 You can define a proper `Book` type later
+}
+
+const BookCard: React.FC<BookCardProps> = ({ book }) => {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
-  const isFavorite = favorites.some(fav => fav.id === book.id);
+  const isFavorite = favorites.some((fav: any) => fav.id === book.id);
 
   return (
     <div className="book-card">

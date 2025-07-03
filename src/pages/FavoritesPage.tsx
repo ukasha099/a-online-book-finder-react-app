@@ -1,8 +1,9 @@
+// src/pages/FavoritesPage.tsx
 import React from 'react';
 import { useFavorites } from '../context/FavoritesContext';
 import BookList from '../components/BookList';
 
-const FavoritesPage = () => {
+const FavoritesPage: React.FC = () => {
   const { favorites } = useFavorites();
 
   return (

@@ -1,11 +1,17 @@
+// src/pages/Home.tsx
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import BookList from '../components/BookList';
 import { useSearch } from '../context/SearchContext';
 
-const Home = () => {
-  const { searchResults, setSearchResults, query, setQuery } = useSearch();
+const Home: React.FC = () => {
+  const {
+    searchResults,
+    setSearchResults,
+    query,
+    setQuery,
+  } = useSearch();
 
   const handleSearch = async () => {
     if (!query.trim()) return;
@@ -21,7 +27,11 @@ const Home = () => {
 
   return (
     <div className="container">
-      <SearchBar value={query} onChange={e => setQuery(e.target.value)} onSearch={handleSearch} />
+      <SearchBar
+        value={query}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+        onSearch={handleSearch}
+      />
       <BookList books={searchResults} />
     </div>
   );
